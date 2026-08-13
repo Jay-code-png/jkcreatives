@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jason Klent Profile - JK CREATIVES</title>
+
+    <style>
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            display: flex; flex-direction: column; align-items: center;
+            min-height: 100vh; overflow-x: hidden; padding: 40px 20px;
+            /* Fade transition settings */
+            transition: opacity 0.8s ease-in-out;
+            opacity: 0; 
+        }
+
+        .bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('./pictures/wallpaper.jpg') no-repeat center center / cover;
+            z-index: -1; filter: brightness(0.3); pointer-events: none;
+        }
+
+        .navbar-container { width: 100%; display: flex; justify-content: center; margin-bottom: 30px; z-index: 100; }
+        .nav-list { display: flex; gap: 20px; list-style: none; }
+        .nav-item { background: rgba(15, 2, 2, 0.85); border-radius: 8px; border: 1px solid rgba(255, 0, 0, 0.3); backdrop-filter: blur(12px); animation: glow-only 4s ease-in-out infinite; cursor: pointer; transition: 0.4s; }
+        .nav-item.active { border-color: #ff0000; box-shadow: 0 0 25px rgba(255, 0, 0, 0.6); }
+        .nav-item:hover { transform: scale(1.1); border-color: #ff0000; }
+        
+
+        .nav-item a { color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; font-weight: bold; display: block; padding: 12px 25px; }
+
+        .header-nav {
+            width: 100%; max-width: 1200px; display: flex; justify-content: space-between;
+            align-items: center; margin-bottom: 30px;
+        }
+
+        .welcome-msg { color: white; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; }
+        .welcome-msg span { color: #ff0000; font-weight: bold; }
+        
+        .logout-link {
+            text-decoration: none; color: #fff; border: 1px solid #ff0000;
+            padding: 8px 20px; border-radius: 4px; font-size: 0.8rem;
+            transition: 0.3s; text-transform: uppercase; cursor: pointer;
+        }
+        .logout-link:hover { background: #ff0000; color: #000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
+
+        .page-content { width: 100%; max-width: 1200px; }
+
+        .panels-container {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px; width: 100%;
+        }
+
+        .panel {
+            background: rgba(15, 2, 2, 0.85); border-radius: 12px; padding: 30px;
+            border: 1px solid rgba(255, 0, 0, 0.3); position: relative;
+            overflow: hidden; animation: breathing 4s ease-in-out infinite;
+            color: #fff; backdrop-filter: blur(12px);
+        }
+
+        .panel::after {
+            content: ""; position: absolute; top: -50%; left: -150%;
+            width: 50%; height: 200%; background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg); transition: all 0.7s ease-in-out;
+        }
+        .panel:hover::after { left: 150%; }
+
+        .panel-title h2 {
+            margin-bottom: 20px; color: #ff4d4d; border-bottom: 2px solid #ff4d4d;
+            padding-bottom: 8px; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;
+        }
+
+        .panel h1 { font-size: 1.6rem; text-shadow: 0 0 10px rgba(255, 0, 0, 0.6); margin-bottom: 15px; }
+        .panel h3 { font-style: italic; color: #ffb3b3; line-height: 1.5; font-weight: 400; margin-top: 10px; }
+        .panel p { color: #d1d1d1; margin-bottom: 10px; font-size: 1.05rem; line-height: 1.6; }
+
+        @keyframes breathing {
+            0%, 100% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.2); transform: translateY(0); }
+            50% { box-shadow: 0 0 35px rgba(255, 0, 0, 0.5); transform: translateY(-5px); }
+        }
+        @keyframes glow-only { 
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.1); } 
+            50% { box-shadow: 0 0 25px rgba(255, 0, 0, 0.4); } 
+        }
+    </style>
+</head>
+<body onload="document.body.style.opacity='1'">
+
+    <div class="bg"></div>
+
+    <nav class="navbar-container">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+            <li class="nav-item active"><a href="aboutus.html" class="nav-link">About Us</a></li>
+        </ul>
+    </nav>
+
+    <div id="about" class="page-content">
+        <header class="header-nav">
+            <div class="welcome-msg">My <span>Portfolio</span></div>
+            <a href="javascript:void(0)" class="logout-link" onclick="handleLogout()">Logout</a>
+        </header>
+
+        <div class="panels-container">
+            <div class="panel">
+                <div class="panel-title"><h2>Profile</h2></div>
+                <h1>Jason Klent G. Intong</h1>
+                <p><strong>Course:</strong> BSCS - 1</p>
+            </div>
+
+            <div class="panel">
+                <div class="panel-title"><h2>Hobbies</h2></div>
+                <p>📸 Photography</p>
+                <p>🎥 Videography</p>
+                <p>🛠️ Technical Management</p>
+            </div>
+
+            <div class="panel">
+                <div class="panel-title"><h2>Ambition</h2></div>
+                <h3>"To make my parents proud of my Success."</h3>
+            </div>
+
+            <div class="panel">
+                <div class="panel-title"><h2>Motto</h2></div>
+                <h3>"You fight your own battles."</h3>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isLeaving = false;
+
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const destination = this.href;
+                
+                if (isLeaving) return;
+                isLeaving = true;
+                
+                document.body.style.opacity = '0';
+                setTimeout(() => {
+                    window.location.href = destination;
+                }, 800);
+            });
+        });
+
+        function handleLogout() {
+            if (isLeaving) return;
+            if (confirm("Are you sure?")) {
+                isLeaving = true;
+                document.body.style.opacity = '0';
+                setTimeout(() => {
+                    window.location.href = "index.html"; 
+                }, 800);
+            }
+        }
+    </script>
+</body>
+</html>

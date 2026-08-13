@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography - JK CREATIVES</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        
+        body { 
+            background-color: #000; 
+            color: white;
+            min-height: 100vh; 
+            opacity: 0; 
+            transition: opacity 1.2s ease-in-out; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .fade-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: #000;
+            z-index: 9999;
+            pointer-events: none;
+            transition: opacity 1s ease-in-out;
+            opacity: 1;
+        }
+
+        body.loaded .fade-overlay {
+            opacity: 0;
+        }
+
+        .bg { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: url('./pictures/wallpaper.jpg') no-repeat center center / cover; 
+            z-index: -1; 
+            filter: brightness(0.2);
+            pointer-events: none; 
+        }
+
+        .container { width: 100%; max-width: 1000px; padding: 60px 20px; z-index: 1; }
+
+        .back-btn {
+            text-decoration: none; color: #ff0000; font-size: 0.9rem;
+            text-transform: uppercase; letter-spacing: 2px;
+            display: inline-block; margin-bottom: 30px; transition: 0.3s;
+        }
+        .back-btn:hover { transform: translateX(-5px); color: #fff; }
+
+        .content-header { border-left: 4px solid #ff0000; padding-left: 20px; margin-bottom: 40px; }
+        .content-header h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 5px; }
+        
+        .description-box {
+            background: rgba(15, 2, 2, 0.85);
+            padding: 40px; 
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 12px; 
+            line-height: 1.8; 
+            color: #d1d1d1;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden; 
+            transition: all 0.5s ease;
+            animation: breathing 6s ease-in-out infinite;
+            cursor: default;
+        }
+
+        .description-box::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -150%;
+            width: 50%;
+            height: 200%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.7s ease-in-out;
+        }
+
+        .description-box:hover {
+            transform: translateY(-10px) scale(1.01);
+            border-color: #ff0000;
+            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.4);
+            animation-play-state: paused;
+        }
+
+        .description-box:hover::after {
+            left: 150%; 
+        }
+
+        .description-box h3 {
+            color: #ff4d4d;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .example-gallery {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            height: 400px;
+            background: #1a1a1a;
+            border-radius: 8px; 
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.4s;
+            animation: breathing 5s ease-in-out infinite;
+            display: block; 
+            text-decoration: none;
+        }
+        
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        
+        .gallery-item:hover { 
+            animation-play-state: paused;
+            border-color: #ff0000; 
+            box-shadow: 0 0 30px rgba(255,0,0,0.5); 
+            transform: scale(1.02);
+        }
+
+        .gallery-item:hover img { transform: scale(1.1); filter: saturate(1.2) brightness(0.6); }
+
+        .gallery-item::before {
+            content: "View Events on Facebook";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 2;
+            opacity: 0;
+            transition: 0.4s;
+            pointer-events: none;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes breathing {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.1); transform: translateY(0); }
+            50% { box-shadow: 0 0 25px rgba(255, 0, 0, 0.3); transform: translateY(-5px); }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="fade-overlay"></div>
+
+    <div class="bg"></div>
+
+    <div class="container">
+        <a href="services.html" class="back-btn nav-link"><i class="fas fa-arrow-left"></i> Back to Services</a>
+        
+        <div class="content-header">
+            <h1>Photography</h1>
+            <p style="color: #ff4d4d;">Capturing moments that last forever.</p>
+        </div>
+
+        <div class="description-box">
+            <h3>What is Photography?</h3>
+            <p>At JK CREATIVES, photography is more than just clicking a shutter. It is the art of capturing light, emotion, and story within a single frame. Whether it's the professional crispness of <strong>Commercial Product Photography</strong>, the intimacy of <strong>Portraits</strong>, or the fast-paced energy of <strong>Event Coverage</strong>.</p>
+        </div>
+
+        <h3 style="margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; text-align: center;">My Portfolio</h3>
+        
+        <div class="example-gallery">
+            <a href="https://web.facebook.com/share/p/1C6FbChA7b/" target="_blank" class="gallery-item" style="animation-delay: 0s;">
+                <img src="./pictures/event.jpg" alt="Event Example">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+                document.body.classList.add('loaded');
+            }, 100);
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const destination = this.href;
+                document.body.classList.remove('loaded');
+                document.body.style.opacity = '0';
+                setTimeout(() => { window.location.href = destination; }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
